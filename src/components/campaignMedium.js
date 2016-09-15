@@ -12,7 +12,7 @@ const campaignMedium = function(options) {
   }
 
   // return campaign
-  return `<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+  return `<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
     <div class="list-campaign-medium">
       <a href="/campaign/${campaignObject.id}">
         <div class="list-campaign-image-wrapper">
@@ -35,32 +35,30 @@ const campaignMedium = function(options) {
 
         <div class="row">
           <div class="col-xs-12">
-            <div class="progress">
-              <div class="progress-bar" style="width: ${campaignObject.progress}%;"></div>
+            <div class="progress" style="border-radius:10px;">
+              <div class="progress-num"> ${campaignObject.progress}%; </div>
+              <div class="progress-bar" style="width: ${campaignObject.progress}%;">
+              </div>
             </div>
           </div>
         </div>
 
         <div style="min-height: 100px; overflow: hidden;">
           <div class="row">
-            <div class="col-xs-4">
-              <h4>${campaignObject.progress}%</h4>
-            </div>
-            <div class="col-xs-4">
+            
+            <div class="col-xs-6">
               <h4>${web3.fromWei(campaignObject.amountRaised, 'ether').toFixed(2)} ETH</h4>
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-6">
               <h4>${web3.fromWei(campaignObject.fundingGoal, 'ether').toFixed(2)} ETH</h4>
             </div>
           </div>
           <div class="row" style="padding-top: 0px;">
-            <div class="col-xs-4" style="padding-top: 0px;">
-              <h6 style="margin-top: 0px; margin-bottom: 0px;">${t('campaignMedium.progress')}</h6>
-            </div>
-            <div class="col-xs-4" style="padding-top: 0px;">
+            
+            <div class="col-xs-6" style="padding-top: 0px;">
               <h6 style="margin-top: 0px; margin-bottom: 0px;">${t('campaignMedium.raised')}</h6>
             </div>
-            <div class="col-xs-4" style="padding-top: 0px;">
+            <div class="col-xs-6" style="padding-top: 0px;">
               <h6 style="margin-top: 0px; margin-bottom: 0px;">${t('campaignMedium.goal')}</h6>
             </div>
           </div>

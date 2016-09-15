@@ -238,6 +238,17 @@ footer {
   background-color: #FFF;
 
   margin-bottom: 20px;
+
+  box-shadow: 1px 1px 5px #888888;
+}
+
+.progress:hover {
+  -webkit-transform: translate(0, -2px);
+    transform: translate(0, -2px);
+    box-shadow: 0 2px 3px rgba(36,46,53,0.15),0 0 0 1px #f7f9fa;
+
+  content: attr(val);
+
 }
 
 .list-campaign-medium h3 {
@@ -278,6 +289,10 @@ footer {
   color: #333;
 }
 
+.list-campaign-medium-text h3 {
+  font-weight:800;
+}
+
 .list-campaign-feature {
   background-color: #FFF;
 }
@@ -296,6 +311,7 @@ footer {
 
 .list-campaign-image {
   height: 20%;
+  border-radius: 5px;
   background-position: center center;
   background-repeat: no-repeat;
 }
@@ -371,3 +387,5 @@ footer {
 .text-light-gray {
   color: #F1F1F1;
 }
+
+

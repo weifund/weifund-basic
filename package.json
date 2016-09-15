@@ -34,6 +34,8 @@
     "weifund-util": "git+https://github.com/weifund/weifund-util"
   },
   "devDependencies": {
+    "budo": "^9.1.0",
+    "garnish": "^5.2.0",
     "pem": "^1.8.3"
   }
 }
