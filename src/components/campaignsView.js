@@ -16,7 +16,7 @@ const campaignsView = function(options) {
     <br /><br /><br /><br /><br /><br />
 
     <div class="row">
-      <h3>${t("campaignsView.campaignsHeader")}</h3>
+      <h3> ${t("campaignsView.campaignsHeader")}</h3>
 
       <br /><br />
 

@@ -1,3 +1,4 @@
+
 const oneDay = require('weifund-util').oneDay;
 
 const campaignMedium = function(options) {
@@ -35,13 +36,14 @@ const campaignMedium = function(options) {
 
         <div class="row">
           <div class="col-xs-12">
+            <div class="progress-num" style="margin-left:auto; width: ${99 - campaignObject.progress}%"> ${campaignObject.progress}% </div>
             <div class="progress" style="border-radius:10px;">
-              <div class="progress-num"> ${campaignObject.progress}%; </div>
               <div class="progress-bar" style="width: ${campaignObject.progress}%;">
               </div>
             </div>
           </div>
         </div>
+
 
         <div style="min-height: 100px; overflow: hidden;">
           <div class="row">
@@ -69,3 +71,4 @@ const campaignMedium = function(options) {
 };
 
 module.exports = campaignMedium;
+

@@ -13,10 +13,10 @@ const campaignHighlightMedium = function(options) {
   }
 
   return `
-  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 list-feature-column">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12 list-feature-column">
     <div class="list-campaign-feature">
       <div class="row">
-        <div class="col-xs-5" style="height: 100%; background: url(${campaignObject.imageUrl});">
+        <div class="col-xs-4" style="height: 100%; border-radius: 5px; background: url(${campaignObject.imageUrl});">
         </div>
         <div class="col-xs-7">
             <a href="/campaign/${campaignObject.id}">
@@ -42,16 +42,15 @@ text-overflow: ellipsis;">
 
             <div class="row">
               <div class="col-xs-12">
-                <div class="progress">
-                  <div class="progress-bar" style="width: ${campaignObject.progress}%;"></div>
+              <div class="progress-num" style="margin-left:auto; width: ${99 - campaignObject.progress}%"> ${campaignObject.progress}% </div>
+              <div class="progress" style="border-radius:10px;">
+                <div class="progress-bar" style="width: ${campaignObject.progress}%;">
                 </div>
               </div>
             </div>
+          </div>
 
             <div class="row">
-              <div class="col-xs-4">
-                <h4>${campaignObject.progress}%</h4>
-              </div>
               <div class="col-xs-4">
                 <h4>${web3.fromWei(campaignObject.amountRaised, 'ether')} ETH</h4>
               </div>
@@ -60,9 +59,6 @@ text-overflow: ellipsis;">
               </div>
             </div>
             <div class="row">
-              <div class="col-xs-4">
-                <h6 style="margin-top: 0px;">${t('campaignHighlightMedium.progress')}</h6>
-              </div>
               <div class="col-xs-4">
                 <h6 style="margin-top: 0px;">${t('campaignHighlightMedium.raised')}</h6>
               </div>
