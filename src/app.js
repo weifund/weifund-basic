@@ -3,7 +3,7 @@ const setDefaultAccount = require('./environment').setDefaultAccount;
 
 // web3 instance and setup method
 const web3 = require('./web3').web3;
-const setupWeb3Provider = require('./web3').setupWeb3Provider;
+const withWeb3Provider = require('./web3').withWeb3Provider;
 
 // ipfs instance and setup
 const setupIPFSProvider = require('./ipfs').setupIPFSProvider;
@@ -33,36 +33,50 @@ drawNavBar();
 // draw startcampaign page
 drawStartCampaignView();
 
-// load application
-const loadApp = function (loadAppEvent) {
-  // window warnign message
-  window.onunload = window.onbeforeunload = handleConfirmOnPageExit;
+/**
+ * There are three phases during the initialization of the app:
+ * 1. Wait for the load event to be fired in the browser after Metamask would
+ *      have been injected, if present.
+ * 2. Asynchronously create a Web3 provider by grabbing Metamask's or pulling
+ *     a lightwallet from localstorage.
+ * 3. Finish initializing the app with the user's account available.
+ */
 
-  // setup the web3 provider
-  if (loadAppEvent.bypassWeb3Provider !== true) {
-    setupWeb3Provider();
-  } else {
-    web3.setProvider(new web3.providers.HttpProvider('https://morden.infura.io/'));
-  }
-
-  setupIPFSProvider();
+const loadAppWithAccounts = function (provider) {
+  web3.setProvider(provider);
 
   // detect what network everything is on
   networkDetective(web3.currentProvider, function(detectiveError, detectiveResut){
     if (!detectiveError) {
       if (detectiveResut.testnet !== true) {
-        if (confirm(`WARNING:
+        confirm(`WARNING:
 -----------
 Your Web3 provider is not set to the Ethereum Morden Testnet.
 
-Please switch your provider to the Ethereum Morden testnet and refresh the page.`)) {
-
-          // load app
-          loadApp({bypassWeb3Provider: true});
-        }
+Please switch your provider to the Ethereum Morden testnet and refresh the page.`);
       }
     }
   });
+
+  // select default account
+  web3.eth.getAccounts(function(accountsError, accounts){
+    if (!accountsError && accounts.length) {
+      setDefaultAccount(accounts[0]);
+    }
+  });
+}
+
+// load application
+const loadApp = function (loadAppEvent) {
+  // window warnign message
+  window.onunload = window.onbeforeunload = handleConfirmOnPageExit;
+
+  // Use a provider without accounts until we can get the account provider
+  // from Metamask or localstorage.
+  web3.setProvider(new web3.providers.HttpProvider('https://morden.infura.io/'));
+  withWeb3Provider(loadAppWithAccounts);
+
+  setupIPFSProvider();
 
   // setup the router
   setupRouter({
@@ -77,13 +91,6 @@ Please switch your provider to the Ethereum Morden testnet and refresh the page.
 
   // set initial route from params
   getRouter()(window.location.pathname);
-
-  // select default account
-  web3.eth.getAccounts(function(accountsError, accounts){
-    if (!accountsError && accounts.length) {
-      setDefaultAccount(accounts[0]);
-    }
-  });
 
   // draw footer later
   drawFooter();
