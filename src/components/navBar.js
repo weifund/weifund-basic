@@ -20,8 +20,9 @@ export default function navBar(options) {
     </div>
     <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 nav-right text-left-xs
       text-left-sm hidden-xs hidden-sm">
-      <a href="/account" style="padding-right: 50px;">${t("navBar.account")} </a>
-      <a href="https://weifund.readthedocs.org/" target="_blank"> ${t("navBar.docs")}</a>
+      <a href="/account" style="padding-right: 50px;">${t("navBar.account")}</a>
+      <a href="https://weifund.readthedocs.org/" style="padding-right: 50px;" target="_blank">${t("navBar.docs")}</a>
+      <a href="https://goo.gl/forms/R0w3vaKdjv3s7SqY2"" target="_blank">Submit A Bug</a>
     </div>
 
     <div class="col-xs-6 visible-xs text-right hidden-lg">
@@ -42,7 +43,8 @@ export default function navBar(options) {
         </div>
         <div class="col-xs-6 col-sm-6 text-right">
           <a href="/account" style="padding-right: 15px;">${t("navBar.account")}</a>
-          <a href="https://weifund.readthedocs.org/" target="_blank">${t("navBar.docs")}</a>
+          <a href="https://weifund.readthedocs.org/" style="padding-right: 15px;" target="_blank">${t("navBar.docs")}</a>
+          <a href="https://goo.gl/forms/R0w3vaKdjv3s7SqY2" target="_blank">Submit A Bug</a>
         </div>
       </div>
     </div>
@@ -62,7 +64,8 @@ export default function navBar(options) {
               </li>
               <li class="list-group-item">
                 <a href="/account" style="padding-right: 15px;">${t("navBar.account")}</a>
-                <a href="https://weifund.readthedocs.org/" target="_blank">${t("navBar.docs")}</a>
+                <a href="https://weifund.readthedocs.org/" style="padding-right: 15px;" target="_blank">${t("navBar.docs")}</a>
+                <a href="https://goo.gl/forms/R0w3vaKdjv3s7SqY2" target="_blank">Submit A Bug</a>
               </li>
             </ul>
           </h3>
